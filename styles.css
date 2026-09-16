@@ -978,6 +978,7 @@ body.dark-mode .nav-item.active {
 
 body.dark-mode .icon-button,
 body.dark-mode .avatar,
+body.dark-mode .mobile-menu-toggle,
 body.dark-mode .search-box,
 body.dark-mode .last-sync,
 body.dark-mode .metric,
@@ -997,9 +998,22 @@ body.dark-mode .compare-panel,
 body.dark-mode .priority-board,
 body.dark-mode .priority-card,
 body.dark-mode .alert,
-body.dark-mode .filter-option {
+body.dark-mode .filter-option,
+body.dark-mode .close-drawer,
+body.dark-mode .secondary-button {
   background: #16201d;
   border-color: rgba(216, 231, 226, 0.08);
+}
+
+body.dark-mode .secondary-button {
+  color: var(--green);
+  background: rgba(109, 164, 133, 0.12);
+}
+
+body.dark-mode .icon-button:hover,
+body.dark-mode .mobile-menu-toggle:hover,
+body.dark-mode .close-drawer:hover {
+  background: rgba(109, 164, 133, 0.18);
 }
 
 body.dark-mode img {
