@@ -998,7 +998,7 @@ body.dark-mode .priority-board,
 body.dark-mode .priority-card,
 body.dark-mode .alert,
 body.dark-mode .filter-option {
-  background: rgba(22, 31, 29, 0.78);
+  background: #16201d;
   border-color: rgba(216, 231, 226, 0.08);
 }
 
@@ -1013,7 +1013,7 @@ body.dark-mode .priority-card.danger,
 body.dark-mode .priority-card.warning,
 body.dark-mode .priority-card.good,
 body.dark-mode .score-item {
-  background: linear-gradient(135deg, rgba(31, 47, 43, 0.96), rgba(22, 31, 29, 0.82));
+  background: linear-gradient(135deg, #1f2f2b, #16201d);
 }
 
 body.dark-mode .metric::before {
