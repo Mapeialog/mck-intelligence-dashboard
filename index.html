@@ -21,13 +21,31 @@
       </aside>
       <main class="main-content">
         <header class="topbar">
-          <div><p class="eyebrow">MCK ADVOGADOS <span>·</span> 14 DE SETEMBRO</p><h1 id="page-title">Visao executiva</h1></div>
+          <div class="topbar-title-wrap">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">☰</button>
+            <div><p class="eyebrow">MCK ADVOGADOS <span>·</span> 14 DE SETEMBRO</p><h1 id="page-title">Visao executiva</h1></div>
+          </div>
           <div class="topbar-actions"><span class="last-sync" id="last-sync">Atualizado agora</span><button class="icon-button" id="theme-button" title="Alternar tema" aria-label="Alternar tema">☼</button><button class="icon-button" id="refresh-button" title="Atualizar dados" aria-label="Atualizar dados">↻</button><button class="icon-button" id="export-button" title="Exportar dados" aria-label="Exportar dados">↓</button><button class="avatar" title="Perfil">CS</button></div>
         </header>
         <div class="command-bar"><label class="search-box"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Buscar em pessoas, clientes e casos" /></label><span class="shortcut">Ctrl K</span></div>
         <section id="page-content" aria-live="polite"></section>
       </main>
     </div>
+    <div class="mobile-backdrop" id="mobile-backdrop" aria-hidden="true"></div>
+    <aside class="filter-drawer" id="filter-drawer" aria-label="Filtros do dashboard" aria-hidden="true">
+      <div class="filter-header">
+        <h3>Filtros</h3>
+        <button class="close-drawer" id="close-filter-drawer" aria-label="Fechar filtros">×</button>
+      </div>
+      <div class="filter-list">
+        <label class="filter-option"><input type="checkbox" data-filter="risk" /><span>Somente riscos</span></label>
+        <label class="filter-option"><input type="checkbox" data-filter="onTime" /><span>Somente em prazo</span></label>
+        <label class="filter-option"><input type="checkbox" data-filter="recent" /><span>Recentes</span></label>
+      </div>
+      <div class="filter-actions">
+        <button class="secondary-button" id="clear-filters">Limpar filtros</button>
+      </div>
+    </aside>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
   </body>
