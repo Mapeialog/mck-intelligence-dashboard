@@ -160,14 +160,19 @@ navigation.forEach(([key, icon, label]) => {
 
 function setMobileMenuOpen(open) {
   document.body.classList.toggle('mobile-nav-open', open);
+  if (open) {
+    document.body.classList.remove('filter-drawer-open');
+    toggleFilterDrawer(false);
+  }
   mobileMenuToggle.setAttribute('aria-expanded', String(open));
 }
 
 function toggleFilterDrawer(force) {
   const shouldOpen = typeof force === 'boolean' ? force : !filterDrawer.classList.contains('open');
   filterDrawer.classList.toggle('open', shouldOpen);
+  document.body.classList.toggle('filter-drawer-open', shouldOpen);
   filterDrawer.setAttribute('aria-hidden', String(!shouldOpen));
-  mobileBackdrop.classList.toggle('visible', shouldOpen);
+  mobileBackdrop.classList.toggle('visible', shouldOpen || document.body.classList.contains('mobile-nav-open'));
 }
 
 function badgeClassForValue(value) {
@@ -335,9 +340,15 @@ mobileMenuToggle.addEventListener('click', () => {
 mobileBackdrop.addEventListener('click', () => {
   setMobileMenuOpen(false);
   toggleFilterDrawer(false);
+  document.body.classList.remove('filter-drawer-open');
+  mobileBackdrop.classList.remove('visible');
 });
 
-closeFilterDrawer.addEventListener('click', () => toggleFilterDrawer(false));
+closeFilterDrawer.addEventListener('click', () => {
+  toggleFilterDrawer(false);
+  document.body.classList.remove('filter-drawer-open');
+  mobileBackdrop.classList.remove('visible');
+});
 
 document.querySelectorAll('input[data-filter]').forEach((input) => {
   input.addEventListener('change', (event) => {
@@ -380,7 +391,12 @@ document.querySelector('#clear-filters').addEventListener('click', () => {
 
 window.addEventListener('resize', () => {
   if (content.innerHTML) render(currentPage);
-  if (window.innerWidth > 900) setMobileMenuOpen(false);
+  if (window.innerWidth > 900) {
+    setMobileMenuOpen(false);
+    toggleFilterDrawer(false);
+    document.body.classList.remove('filter-drawer-open');
+    mobileBackdrop.classList.remove('visible');
+  }
 });
 
 render('executivo');

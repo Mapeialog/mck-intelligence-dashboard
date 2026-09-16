@@ -33,7 +33,10 @@ body {
 }
 button, input { font: inherit; color: inherit; }
 button { cursor: pointer; }
-img { max-width: 100%; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 .app-shell {
   display: flex;
@@ -836,6 +839,8 @@ tbody tr:hover { background: rgba(245,247,243,0.7); }
   z-index: 18;
 }
 
+body.mobile-nav-open .mobile-backdrop,
+body.filter-drawer-open .mobile-backdrop,
 .mobile-backdrop.visible { display: block; }
 
 .filter-drawer {
@@ -853,7 +858,8 @@ tbody tr:hover { background: rgba(245,247,243,0.7); }
   z-index: 20;
 }
 
-.filter-drawer.open { transform: translateX(0); }
+.filter-drawer.open,
+body.filter-drawer-open .filter-drawer { transform: translateX(0); }
 
 .filter-header {
   display: flex;
@@ -978,9 +984,36 @@ body.dark-mode .metric,
 body.dark-mode .surface,
 body.dark-mode .table-wrap,
 body.dark-mode .mobile-row-item,
-body.dark-mode .filter-drawer {
+body.dark-mode .filter-drawer,
+body.dark-mode .focus-panel,
+body.dark-mode .focus-card,
+body.dark-mode .insight-pill,
+body.dark-mode .score-item,
+body.dark-mode .highlight-card,
+body.dark-mode .operational-pulse,
+body.dark-mode .pulse-item,
+body.dark-mode .performance-compare,
+body.dark-mode .compare-panel,
+body.dark-mode .priority-board,
+body.dark-mode .priority-card,
+body.dark-mode .alert,
+body.dark-mode .filter-option {
   background: rgba(22, 31, 29, 0.78);
   border-color: rgba(216, 231, 226, 0.08);
+}
+
+body.dark-mode img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+body.dark-mode .highlight-card.warm,
+body.dark-mode .highlight-card.cool,
+body.dark-mode .priority-card.danger,
+body.dark-mode .priority-card.warning,
+body.dark-mode .priority-card.good,
+body.dark-mode .score-item {
+  background: linear-gradient(135deg, rgba(31, 47, 43, 0.96), rgba(22, 31, 29, 0.82));
 }
 
 body.dark-mode .metric::before {
@@ -993,18 +1026,6 @@ body.dark-mode .bar {
 
 body.dark-mode .alert {
   background: linear-gradient(180deg, rgba(255, 176, 124, 0.1), rgba(109, 164, 133, 0.08));
-}
-
-body.dark-mode .operational-pulse,
-body.dark-mode .pulse-item,
-body.dark-mode .highlight-card,
-body.dark-mode .performance-compare,
-body.dark-mode .compare-panel,
-body.dark-mode .priority-board,
-body.dark-mode .priority-card,
-body.dark-mode .filter-option {
-  background: rgba(20, 31, 29, 0.78);
-  border-color: rgba(216, 231, 226, 0.08);
 }
 
 body.dark-mode .toast {
@@ -1036,6 +1057,11 @@ body.dark-mode .search-box input::placeholder { color: var(--muted); }
 
   body.mobile-nav-open .sidebar {
     transform: translateX(0);
+  }
+
+  body.mobile-nav-open .mobile-backdrop,
+  body.filter-drawer-open .mobile-backdrop {
+    display: block;
   }
 
   .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
